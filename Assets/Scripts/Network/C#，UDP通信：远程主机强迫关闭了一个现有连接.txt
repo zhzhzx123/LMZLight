@@ -1,0 +1,11 @@
+第一步：在程序中加入下面三个常量
+const uint IOC_IN = 0x80000000;
+static int IOC_VENDOR = 0x18000000;
+int SIO_UDP_CONNRESET = (int)(IOC_IN | IOC_VENDOR | 12);
+
+
+第二部：在程序启动的时候执行下面的语句
+server.Client.IOControl((int)SIO_UDP_CONNRESET, new byte[] { Convert.ToByte(false) }, null);
+
+
+再次执行，OK，说好的无连接UDP回来了！
